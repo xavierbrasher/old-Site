@@ -1,13 +1,22 @@
 $(document).ready(function (){
 
+	if (localStorage.getItem("userAuthentication") != "true") {
+		window.location.href = "index.html";
+	}
+	else{
+		localStorage.setItem("userAuthentication", "");
+		$('#nameInput').val(localStorage.getItem("username"));
+		$('#username').html(localStorage.getItem("username"))
+	}
+
 	$('#correct1').click(function(){
 		var answer = $('#question1').val();
-		
+		console.log(answer);
 		if (answer==40) {
 			alert("question1 is correct")
 		}
 		else {
-			alert(" wrong! fatface")
+			alert(" wrong!")
 		}
 	});
 
@@ -20,7 +29,7 @@ $(document).ready(function (){
 				alert("question1 is correct")
 			}
 			else {
-				alert(" wrong! fatface");
+				alert(" wrong!");
 		    }
 		}
 	});
@@ -32,7 +41,7 @@ $(document).ready(function (){
 			alert("question2 is correct")
 		}
 		else {
-			alert(" wrong! fatface")
+			alert(" wrong!")
 		}
 	});
 
@@ -45,7 +54,7 @@ $(document).ready(function (){
 				alert("question2 is correct")
 			}
 			else {
-				alert(" wrong! fatface");
+				alert(" wrong!");
 		    }
 		}
 	});
@@ -57,7 +66,7 @@ $(document).ready(function (){
 			alert("question3 is correct")
 		}
 		else {
-			alert(" wrong! fatface")
+			alert(" wrong!")
 		}
 	});
 
@@ -70,7 +79,7 @@ $(document).ready(function (){
 				alert("question3 is correct")
 			}
 			else {
-				alert(" wrong! fatface");
+				alert(" wrong!");
 		    }
 		}
 	});	
@@ -82,7 +91,7 @@ $(document).ready(function (){
 			alert("question4 is correct")
 		}
 		else {
-			alert(" wrong! fatface")
+			alert(" wrong!")
 		}
 	});
 
@@ -95,7 +104,7 @@ $(document).ready(function (){
 				alert("question4 is correct")
 			}
 			else {
-				alert(" wrong! fatface");
+				alert(" wrong!");
 		    }
 		}
 	});
@@ -107,7 +116,7 @@ $(document).ready(function (){
 			alert("question5 is correct")
 		}
 		else {
-			alert(" wrong! fatface")
+			alert(" wrong!")
 		}
 	});
 
@@ -120,7 +129,7 @@ $(document).ready(function (){
 				alert("question5 is correct")
 			}
 			else {
-				alert(" wrong! fatface");
+				alert(" wrong!");
 		    }
 		}
 	});
@@ -129,7 +138,7 @@ $(document).ready(function (){
 
 
 	// CREATE A REFERENCE TO FIREBASE
-        var messagesRef = new Firebase('https://xavierchat.firebaseio.com/');
+        var messagesRef = new Firebase('https://xavierchat.firebaseio.com/chat');
 
         // REGISTER DOM ELEMENTS
         var messageField = $('#messageInput');
@@ -150,10 +159,12 @@ $(document).ready(function (){
         });
 
         // Add a callback that is triggered for each chat message.
-        messagesRef.limitToLast(10).on('child_added', function (snapshot) {
+        messagesRef.on('child_added', function (snapshot) {
           //GET DATA
+          console.log(snapshot.key());
+          test = snapshot;
           var data = snapshot.val();
-          var username = data.name || "anonymous";
+          var username = data.name || "??????";
           var message = data.text;
 
           //CREATE ELEMENTS MESSAGE & SANITIZE TEXT

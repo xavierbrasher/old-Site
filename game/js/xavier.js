@@ -10,6 +10,16 @@ $(document).ready(function (){
 	}
 
 	$('#correct1').click(function(){
+		isawesome()
+	});
+
+	$('#question1').keypress(function(e){
+
+		if(e.which == 13) {
+	    	isawesome()
+		}
+	});
+	function isawesome() {
 		var answer = $('#question1').val();
 		console.log(answer);
 		if (answer==40) {
@@ -18,21 +28,8 @@ $(document).ready(function (){
 		else {
 			alert(" wrong!")
 		}
-	});
+	};
 
-	$('#question1').keypress(function(e){
-
-		if(e.which == 13) {
-	    	var answer = $('#question1').val();
-		
-			if (answer==40) {
-				alert("question1 is correct")
-			}
-			else {
-				alert(" wrong!");
-		    }
-		}
-	});
 
 	$('#correct2').click(function(){
 		var answer = $('#question2').val();

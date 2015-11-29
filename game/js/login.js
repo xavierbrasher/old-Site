@@ -1,7 +1,22 @@
 $(document).ready(function(){
 
-	$('#sign-in').click(function(){
+	var test = 4*9;
+	alert(test);
 
+	$('#sign-in').click(function(e){
+		login();
+		
+	})
+
+	$('#inputPassword3').keypress(function (e){
+
+		if (e.which==13) {
+
+			login();
+		}; 
+	});
+
+	function login (){
 		var username = $('#inputName3').val();
 		var password = $('#inputPassword3').val();
 
@@ -19,20 +34,19 @@ $(document).ready(function(){
 			console.log(credentials[username]);
 
 			if (username!="" && password==credentials[username]) {
+	
 				localStorage.setItem("userAuthentication", "true");
 				localStorage.setItem("username", username);
 				window.location.href = "workinprogress.html";
 			}
 			else {
-				alert("wrong")
+				alert("wrong")	
 			};
-			
+		
 
 		}, function (errorObject) {
   			console.log("The read failed: " + errorObject.code);
 		});
-
-
-	})
+	}
 
 });

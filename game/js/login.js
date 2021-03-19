@@ -33,15 +33,9 @@ $(document).ready(function(){
 
 			console.log(credentials[username]);
 			var okay = 1
-			if (okay == 1) {
-	
-				localStorage.setItem("userAuthentication", "true");
-				localStorage.setItem("username", username);
-				window.location.href = "workinprogress.html";
-			}
-			else {
-				alert("wrong")	
-			};
+			localStorage.setItem("userAuthentication", "true");
+			localStorage.setItem("username", username);
+			window.location.href = "workinprogress.html";
 		
 
 		}, function (errorObject) {

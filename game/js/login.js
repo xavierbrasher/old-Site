@@ -24,7 +24,7 @@ $(document).ready(function(){
 		console.log(password);
 		
 		//window.location.href = "workinprogress.html";
-		var messagesRef = new Firebase('https://xavierchat.firebaseio.com/credentials');
+		var messagesRef = new Firebase('https://xavierchat-7b688-default-rtdb.firebaseio.com/');
 
 		// Attach an asynchronous callback to read the data at our posts reference
 		messagesRef.on("value", function(snapshot) {

@@ -32,8 +32,8 @@ $(document).ready(function(){
 			var credentials = snapshot.val();
 
 			console.log(credentials[username]);
-
-			if (True) {
+			var okay = 1
+			if (okay == 1) {
 	
 				localStorage.setItem("userAuthentication", "true");
 				localStorage.setItem("username", username);
